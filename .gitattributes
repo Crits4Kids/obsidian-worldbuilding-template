@@ -8,3 +8,7 @@
 *.woff binary
 *.woff2 binary
 *.ttf binary
+.obsidian/plugins/*/main.js -text
+.obsidian/plugins/*/styles.css -text
+.obsidian/plugins/*/manifest.json -text
+.obsidian/themes/** -text
