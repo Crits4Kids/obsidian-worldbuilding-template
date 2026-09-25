@@ -1,1 +1,13 @@
-["templater-obsidian","dataview","quickadd","calendarium","obsidian-leaflet-plugin","obsidian-excalidraw-plugin","charted-roots","find-unlinked-files","tag-wrangler","obsidian-style-settings","obsidian-git"]
+[
+  "templater-obsidian",
+  "dataview",
+  "quickadd",
+  "calendarium",
+  "obsidian-leaflet-plugin",
+  "obsidian-excalidraw-plugin",
+  "charted-roots",
+  "find-unlinked-files",
+  "tag-wrangler",
+  "obsidian-style-settings",
+  "obsidian-git"
+]

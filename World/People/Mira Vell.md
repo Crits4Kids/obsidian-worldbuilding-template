@@ -11,6 +11,7 @@ summary: Harbormaster of Rivertown.
 share: false
 aliases: []
 tags: [person, example]
+cr_id: ade-013-neb-001
 cr_type: person
 name: Mira Vell
 role: Harbormaster

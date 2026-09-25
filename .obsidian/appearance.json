@@ -1,1 +1,10 @@
-{ "cssTheme": "Minimal", "theme": "obsidian", "enabledCssSnippets": ["chronicle", "infobox", "callouts", "gallery"] }
+{
+  "cssTheme": "Minimal",
+  "theme": "obsidian",
+  "enabledCssSnippets": [
+    "chronicle",
+    "infobox",
+    "callouts",
+    "gallery"
+  ]
+}
