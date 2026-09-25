@@ -21,6 +21,8 @@ EXCLUDES=()
 for id in "${KEEP[@]}"; do EXCLUDES+=(":(exclude).obsidian/plugins/$id/data.json"); done
 PRESENT=()
 for p in "${OWNED[@]}"; do if git cat-file -e "FETCH_HEAD:$p" 2>/dev/null; then PRESENT+=("$p"); fi; done
+# Guard: a pathspec made only of excludes would match the whole tree, world content included.
+if [ ${#PRESENT[@]} -eq 0 ]; then echo "No template-owned paths in $SRC ($BRANCH); nothing to sync." >&2; exit 1; fi
 git checkout FETCH_HEAD -- "${PRESENT[@]}" "${EXCLUDES[@]}"
 echo "Template files updated from $SRC ($BRANCH). Review, then commit:"
 git status --short -- "${OWNED[@]}"

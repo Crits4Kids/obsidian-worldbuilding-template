@@ -94,3 +94,14 @@ test("deckOfWorlds creates nothing when a name collides or the user cancels", as
   await expect(wb.commands.deckOfWorlds({ app, ui: cancel, now: NOW })).rejects.toBe(wb.commands.CANCEL);
   expect(new Map(store)).toEqual(before);
 });
+
+test("deckOfWorlds links the real note, not a same-named player handout copy", async () => {
+  const { app, store, wb } = await boot({
+    "Player Handouts/Groups/Tide Court.md": note("title: Tide Court\ntype: group", "copy"),
+    "World/Groups/Tide Court.md": note("type: group", "Court.\n\n## Connections\n"),
+  });
+  const ui = makeUi(["Bell", "Swamp", "existing", "Built by the court.", "Tide Court", "skip", "skip", "skip", "skip", false]);
+  await wb.commands.deckOfWorlds({ app, ui, now: NOW });
+  expect(store.get("World/Groups/Tide Court.md")).toContain("- [[Bell]] (micro-setting: landmark)");
+  expect(store.get("Player Handouts/Groups/Tide Court.md")).not.toContain("[[Bell]]");
+});

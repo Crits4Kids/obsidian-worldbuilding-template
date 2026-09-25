@@ -1,9 +1,9 @@
 {
+  "data_version": 2,
+  "command_timeout": 5,
   "templates_folder": "_System/Templates",
   "user_scripts_folder": "_System/Scripts/templater",
-  "trigger_on_file_creation": true,
   "trigger_on_file_creation_mode": "folder",
-  "enable_folder_templates": true,
   "folder_templates": [
     { "folder": "World/People", "template": "_System/Templates/Person.md" },
     { "folder": "World/Groups", "template": "_System/Templates/Group.md" },
@@ -16,7 +16,8 @@
     { "folder": "Maps", "template": "_System/Templates/Map.md" },
     { "folder": "GM Toolkit", "template": "_System/Templates/GM Toolkit Item.md" }
   ],
-  "ignore_folders_on_creation": ["_System", "Player Handouts", "Archive", "Assets"],
+  "file_templates": [],
+  "ignore_folders_on_creation": [{ "folder": "_System" }, { "folder": "Player Handouts" }, { "folder": "Archive" }, { "folder": "Assets" }],
   "syntax_highlighting": true,
   "auto_jump_to_cursor": false
 }

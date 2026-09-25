@@ -275,7 +275,9 @@ async function deckOfWorlds(ctx) {
   if (biome === "other") biome = md.oneLine(await ask(ui.prompt("Biome")));
   const kinds = [...Object.keys(deck.KINDS), "existing", "skip"];
   const kindLabels = [...Object.values(deck.KINDS).map((k) => k.label), "Link an existing note", "Skip this card"];
-  const existing = under(app, schema.CONTENT_ROOTS).map((f) => f.basename).sort();
+  // Resolve "existing" cards by file, never by link text: Player Handouts holds same-named copies.
+  const byName = new Map(under(app, schema.CONTENT_ROOTS).map((f) => [f.basename, f]));
+  const existing = [...byName.keys()].sort();
   const cards = [];
   for (const slot of deck.SLOTS) {
     const kind = await ask(ui.suggest(kindLabels, kinds, `${infobox.humanize(slot)} card becomes…`));
@@ -289,17 +291,18 @@ async function deckOfWorlds(ctx) {
   // 2. Plan and check every collision before writing anything.
   const plan = deck.planStack({ name, biome, cards });
   for (const n of [plan.microsetting, ...plan.notes]) assertFree(app, n.name);
-  const bodies = {};
-  for (const n of [plan.microsetting, ...plan.notes]) bodies[n.name] = await readBody(app, n.type, n.subtype);
+  const noteBodies = [];
+  for (const n of plan.notes) noteBodies.push(await readBody(app, n.type, n.subtype));
+  const stackBody = await readBody(app, "microsetting");
   // 3. Write.
-  for (const n of plan.notes) {
+  for (const [i, n] of plan.notes.entries()) {
     await ensureFolder(app, schema.folderFor(n.type));
-    await app.vault.create(`${schema.folderFor(n.type)}/${n.name}.md`, notes.buildNote(n, bodies[n.name]));
+    await app.vault.create(`${schema.folderFor(n.type)}/${n.name}.md`, notes.buildNote(n, noteBodies[i]));
   }
   await ensureFolder(app, "Micro-settings");
-  const file = await app.vault.create(`Micro-settings/${name}.md`, notes.buildNote(plan.microsetting, bodies[name]));
+  const file = await app.vault.create(`Micro-settings/${name}.md`, notes.buildNote(plan.microsetting, stackBody));
   for (const l of plan.links) {
-    const target = app.metadataCache.getFirstLinkpathDest(l.name, "");
+    const target = byName.get(l.name);
     if (target) await app.vault.process(target, (text) => {
       const { frontmatter, body } = md.splitFrontmatter(text);
       return frontmatter + md.addConnection(body, l.connection);

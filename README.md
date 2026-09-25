@@ -14,9 +14,10 @@ A system-agnostic Obsidian vault for running tabletop RPGs, kept in Git. Clone i
 1. On GitHub, open this repository and click **Use this template → Create a new repository**. Make it private.
 2. Clone it: `git clone <your new repo> ~/Obsidian/<Game>`
 3. In Obsidian: **Open folder as vault**, pick the folder, then click **Trust author and enable plugins**.
-4. Optional: run **WB: Remove example content** (Ctrl/Cmd+P, type `WB:`).
-5. Run **WB: New campaign**.
-6. Fill in the top of **World Bible** (premise, tone, current state).
+4. **Once per computer:** Settings → Templater → turn on **Trigger Templater on new file creation**. Templater stores this per device, so it can't ship in the repo. Without it, right-click → New note in a family folder gives an empty note; the `WB:` commands work either way.
+5. Optional: run **WB: Remove example content** (Ctrl/Cmd+P, type `WB:`).
+6. Run **WB: New campaign**.
+7. Fill in the top of **World Bible** (premise, tone, current state).
 
 ## Daily use
 
@@ -89,7 +90,7 @@ git diff                            # review
 git commit -am "Update from template"
 ```
 
-It updates `_System/`, plugins, snippets, the theme, `CLAUDE.md`, `docs/` and `THIRD_PARTY_NOTICES.md`. It never touches your world notes or your Calendarium, Charted Roots, Obsidian Git, Leaflet, Excalidraw or Style Settings settings. It refuses to run if template files have uncommitted changes.
+It updates `_System/`, plugins, snippets, the theme, `CLAUDE.md`, `docs/` and `THIRD_PARTY_NOTICES.md`. It never touches your world notes or your Calendarium, Charted Roots, Obsidian Git, Leaflet, Excalidraw or Style Settings settings. It refuses to run if template files have uncommitted changes. (Some plugins rewrite their own settings when Obsidian opens, so commit after your first open.) It doesn't delete files removed from the template, and it doesn't enable newly added plugins. Enable those in Settings → Community plugins.
 
 ## Updating plugins (template maintainers)
 

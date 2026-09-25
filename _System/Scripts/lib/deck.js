@@ -23,12 +23,13 @@ function summarize(text, max = 140) {
 function planStack({ name, biome, cards }) {
   const used = (cards || []).filter((c) => c && c.kind !== "skip");
   if (!used.length) throw new Error("A micro-setting needs at least one card.");
-  const seen = new Set();
+  // Case-insensitive, and including the micro-setting itself: macOS/Windows file names ignore case.
+  const seen = new Set([oneLine(name).toLowerCase()]);
   for (const c of used) {
     const n = oneLine(c.noteName);
     if (!n) throw new Error(`The ${c.slot} card needs a note name.`);
-    if (seen.has(n) && c.kind !== "existing") throw new Error(`"${n}" is used twice in this stack.`);
-    seen.add(n);
+    if (seen.has(n.toLowerCase()) && c.kind !== "existing") throw new Error(`"${n}" is used twice in this stack.`);
+    seen.add(n.toLowerCase());
   }
   const tag = (c) => `[[${name}]] (micro-setting: ${c.slot})`;
   const notes = [];

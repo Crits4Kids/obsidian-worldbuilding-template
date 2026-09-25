@@ -28,3 +28,9 @@ test("there is one Base per family", () => {
   const bases = readdirSync(join(ROOT, "_System/Bases"));
   for (const def of Object.values(schema.FAMILIES)) expect(bases).toContain(`${def.label}.base`);
 });
+
+test("Bases exclude the Player Handouts copies", () => {
+  for (const def of Object.values(schema.FAMILIES)) {
+    expect(readFileSync(join(ROOT, "_System/Bases", `${def.label}.base`), "utf8")).toContain('!file.inFolder("Player Handouts")');
+  }
+});

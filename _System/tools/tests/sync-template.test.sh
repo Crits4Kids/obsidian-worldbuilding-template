@@ -22,4 +22,10 @@ grep -q mine .obsidian/plugins/calendarium/data.json || { echo "FAIL calendarium
 git -c user.email=t@t -c user.name=t commit -qam sync
 echo dirty >> _System/lib.js
 if "$SCRIPT" "$T/tpl" main >/dev/null 2>&1; then echo "FAIL should refuse dirty tree"; exit 1; fi
+git checkout -q -- _System/lib.js
+git -c init.defaultBranch=main init -q "$T/empty"; (cd "$T/empty"; echo x > other.txt; git add -A; git -c user.email=t@t -c user.name=t commit -qm e)
+echo uncommitted-world >> World/People/X.md
+out=$("$SCRIPT" "$T/empty" main 2>&1) && { echo "FAIL should refuse a template without owned paths"; exit 1; }
+echo "$out" | grep -q "No template-owned paths" || { echo "FAIL wrong refusal: $out"; exit 1; }
+grep -q uncommitted-world World/People/X.md || { echo "FAIL world content lost"; exit 1; }
 echo PASS

@@ -12,6 +12,9 @@ test("Templater folder templates point at real templates and folders", () => {
   const t = json(".obsidian/plugins/templater-obsidian/data.json");
   expect(t.templates_folder).toBe("_System/Templates");
   expect(t.user_scripts_folder).toBe("_System/Scripts/templater");
+  expect(t.data_version).toBe(2);
+  expect(t.trigger_on_file_creation).toBeUndefined();
+  for (const f of t.ignore_folders_on_creation) expect(typeof f.folder).toBe("string");
   for (const ft of t.folder_templates) {
     expect(existsSync(join(ROOT, ft.folder))).toBe(true);
     expect(existsSync(join(ROOT, ft.template))).toBe(true);

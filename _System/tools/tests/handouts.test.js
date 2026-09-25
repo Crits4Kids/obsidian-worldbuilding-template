@@ -26,3 +26,21 @@ test("makeHandout keeps only display frontmatter", () => {
     "Body [[X]]\n> [!gm] s\n> x\n", new Set());
   expect(out).toBe("---\ntitle: Rivertown\ntype: place\ntags: [place]\n---\nBody X\n");
 });
+
+test("an unclosed %% hides the rest of the note, as in Obsidian", () => {
+  expect(h.stripSecrets("Public\n%%\nGM notes forever")).toBe("Public\n");
+});
+
+test("lazy continuation lines of a gm callout are stripped", () => {
+  expect(h.stripSecrets("Intro\n> [!gm] Secret\n> The duke is a vampire\nand he killed the king.\n\nAfter")).toBe("Intro\n\nAfter");
+});
+
+test("%% inside code is not treated as a comment", () => {
+  const body = "```\n%% x\n```\nkeep `%%` this";
+  expect(h.stripSecrets(body)).toBe(body);
+});
+
+test("links to shared notes are normalised to the bare name", () => {
+  const shared = new Set(["Mira Vell"]);
+  expect(h.unlinkUnshared("[[World/People/Mira Vell]] [[World/People/Mira Vell|Mira]]", shared)).toBe("[[Mira Vell]] [[Mira Vell|Mira]]");
+});

@@ -2,6 +2,7 @@ filters:
   and:
     - type == "plot"
     - status != "archived"
+    - '!file.inFolder("Player Handouts")'
 views:
   - type: table
     name: All

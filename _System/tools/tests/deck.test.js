@@ -35,3 +35,8 @@ test("summarize takes the first sentence and caps length", () => {
   expect(deck.summarize("One. Two.")).toBe("One.");
   expect(deck.summarize("x".repeat(200)).length).toBe(140);
 });
+
+test("planStack rejects a card named like the micro-setting, and case-only duplicates", () => {
+  expect(() => deck.planStack({ name: "Harbor", biome: "Coast", cards: [{ ...cards[0], noteName: "Harbor" }] })).toThrow("twice");
+  expect(() => deck.planStack({ name: "X", biome: "Coast", cards: [cards[0], { ...cards[1], kind: "place", noteName: "the drowned bell" }] })).toThrow("twice");
+});

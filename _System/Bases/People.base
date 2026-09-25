@@ -2,6 +2,7 @@ filters:
   and:
     - type == "person"
     - status != "archived"
+    - '!file.inFolder("Player Handouts")'
 views:
   - type: table
     name: All
