@@ -9,13 +9,11 @@ campaigns: []
 summary: "A sample campaign. Delete with WB: Remove example content."
 share: false
 aliases: []
-tags:
-  - campaign
-  - example
+tags: [campaign, example]
 system: Any
 players: []
 start:
-active: false
+active: true
 ---
 > [!infobox]+ Example Campaign
 >
