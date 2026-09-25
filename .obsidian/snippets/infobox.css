@@ -1,0 +1,18 @@
+/* [!infobox]: Chronicler-style wiki infobox, floated right on wide panes. */
+.callout[data-callout="infobox"] {
+  --callout-color: var(--color-base-50);
+  --callout-icon: lucide-info;
+  float: right; clear: right; width: min(320px, 45%); margin: 0 0 1em 1.5em; padding: 0.5em 0.75em;
+  background: var(--background-secondary); border: 1px solid var(--background-modifier-border); border-radius: 6px;
+  font-size: 0.875em;
+}
+.callout[data-callout="infobox"] .callout-title { justify-content: center; font-size: 1.1em; font-weight: 700; }
+.callout[data-callout="infobox"] .callout-title-inner { text-align: center; }
+.callout[data-callout="infobox"] img { display: block; margin: 0.25em auto; max-width: 100%; border-radius: 4px; }
+.callout[data-callout="infobox"] h6 { text-align: center; margin: 0.5em 0 0.25em; font-size: 0.95em; background: var(--background-modifier-hover); padding: 2px 4px; }
+.callout[data-callout="infobox"] table { width: 100%; margin: 0; }
+.callout[data-callout="infobox"] thead { display: none; }
+.callout[data-callout="infobox"] td { border: none; padding: 2px 4px; vertical-align: top; }
+.callout[data-callout="infobox"] td:first-child { width: 40%; }
+.callout[data-callout="infobox"] hr { margin: 0.4em 0; }
+@media (max-width: 700px) { .callout[data-callout="infobox"] { float: none; width: 100%; margin: 0 0 1em; } }
