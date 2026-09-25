@@ -7,7 +7,7 @@ A system-agnostic Obsidian vault for running tabletop RPGs, kept in Git. Clone i
 - **Deck of Worlds.** Turn a card stack into linked Place, Person, Group, Lore and Plot notes in one guided command.
 - **Foundry VTT.** Built for the Obsidian Bridge module: GM notes stay GM-only, and an export step makes secret-free player handouts.
 - **Calendar, maps, family trees.** Calendarium (a "World Calendar" is preconfigured), Leaflet, Charted Roots and Excalidraw.
-- **Backups.** Obsidian Git commits and pushes every 10 minutes.
+- **Backups.** Obsidian Git commits and pushes every 10 minutes once you run **WB: Enable auto-backup** (off in the template, so the template itself never receives your game).
 
 ## Start a new game
 
@@ -15,9 +15,10 @@ A system-agnostic Obsidian vault for running tabletop RPGs, kept in Git. Clone i
 2. Clone it: `git clone <your new repo> ~/Obsidian/<Game>`
 3. In Obsidian: **Open folder as vault**, pick the folder, then click **Trust author and enable plugins**.
 4. **Once per computer:** Settings → Templater → turn on **Trigger Templater on new file creation**. Templater stores this per device, so it can't ship in the repo. Without it, right-click → New note in a family folder gives an empty note; the `WB:` commands work either way.
-5. Optional: run **WB: Remove example content** (Ctrl/Cmd+P, type `WB:`).
-6. Run **WB: New campaign**.
-7. Fill in the top of **World Bible** (premise, tone, current state).
+5. Run **WB: Enable auto-backup** (Ctrl/Cmd+P, type `WB:`). It turns on Obsidian Git's 10-minute commit and push, and refuses if this folder is still a direct clone of the template.
+6. Optional: run **WB: Remove example content**.
+7. Run **WB: New campaign**.
+8. Fill in the top of **World Bible** (premise, tone, current state).
 
 ## Daily use
 
@@ -34,6 +35,7 @@ All commands are in the command palette under `WB:`.
 | WB: Export player handouts | Copies every note with `share: true` into `Player Handouts/`, removing `[!gm]` callouts, `%%comments%%` and links to unshared notes. |
 | WB: Archive note | Marks the current note `archived` and moves it to `Archive/`. |
 | WB: Remove example content | Deletes every note tagged `example`. |
+| WB: Enable auto-backup | Turns on Obsidian Git commit + push every 10 minutes for this game's repository. Refuses on a direct clone of the template. |
 
 Creating a note directly in a family folder (right-click → New note) runs the same prompts automatically.
 
@@ -93,6 +95,10 @@ git commit -am "Update from template"
 ```
 
 It updates `_System/`, plugins, snippets, the theme, `CLAUDE.md`, `docs/` and `THIRD_PARTY_NOTICES.md`. It never touches your world notes or your Calendarium, Charted Roots, Obsidian Git, Leaflet, Excalidraw or Style Settings settings. It refuses to run if template files have uncommitted changes. (Some plugins rewrite their own settings when Obsidian opens, so commit after your first open.) It doesn't delete files removed from the template, and it doesn't enable newly added plugins. Enable those in Settings → Community plugins.
+
+## Working on the template itself
+
+Auto-backup ships **off** so that opening a clone of this template in Obsidian never pushes notes into the template. Keep it that way in template clones. Commit template changes by hand.
 
 ## Updating plugins (template maintainers)
 

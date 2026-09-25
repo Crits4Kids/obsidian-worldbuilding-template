@@ -179,6 +179,26 @@
           }
         ]
       }
+    },
+    {
+      "id": "wb-enable-auto-backup",
+      "name": "WB: Enable auto-backup",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "id": "wb-enable-auto-backup-macro",
+        "name": "WB: Enable auto-backup",
+        "commands": [
+          {
+            "id": "wb-enable-auto-backup-script",
+            "name": "enable-auto-backup",
+            "type": "UserScript",
+            "path": "_System/Scripts/quickadd/enable-auto-backup.js",
+            "settings": {}
+          }
+        ]
+      }
     }
   ],
   "inputPrompt": "single-line",

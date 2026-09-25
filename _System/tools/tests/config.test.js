@@ -23,7 +23,7 @@ test("Templater folder templates point at real templates and folders", () => {
 
 test("QuickAdd macros point at real scripts", () => {
   const q = json(".obsidian/plugins/quickadd/data.json");
-  expect(q.choices.length).toBe(9);
+  expect(q.choices.length).toBe(10);
   for (const c of q.choices) for (const cmd of c.macro.commands) expect(existsSync(join(ROOT, cmd.path))).toBe(true);
 });
 
@@ -37,4 +37,10 @@ test("properties are hidden in notes and one hotkey opens the file-properties pa
   expect(json(".obsidian/app.json").propertiesInDocument).toBe("hidden");
   const hk = json(".obsidian/hotkeys.json")["properties:open-local"];
   expect(hk).toEqual([{ modifiers: ["Mod", "Shift"], key: ";" }]);
+});
+
+test("Obsidian Git ships with automatic commit and push off", () => {
+  const g = json(".obsidian/plugins/obsidian-git/data.json");
+  expect(g.autoSaveInterval).toBe(0);
+  expect(g.autoPushInterval).toBe(0);
 });
