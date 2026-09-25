@@ -1,0 +1,39 @@
+filters:
+  and:
+    - type == "lore"
+    - status != "archived"
+    - '!file.inFolder("Player Handouts")'
+views:
+  - type: table
+    name: All
+    order: [file.name, lore_type, domain, status, summary]
+  - type: table
+    name: Deity
+    filters:
+      and:
+        - lore_type == "deity"
+    order: [file.name, domain, status, summary]
+  - type: table
+    name: Species
+    filters:
+      and:
+        - lore_type == "species"
+    order: [file.name, domain, status, summary]
+  - type: table
+    name: Plane
+    filters:
+      and:
+        - lore_type == "plane"
+    order: [file.name, domain, status, summary]
+  - type: table
+    name: History
+    filters:
+      and:
+        - lore_type == "history"
+    order: [file.name, domain, status, summary]
+  - type: table
+    name: Culture
+    filters:
+      and:
+        - lore_type == "culture"
+    order: [file.name, domain, status, summary]

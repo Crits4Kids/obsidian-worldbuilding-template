@@ -1,0 +1,7 @@
+/* [!gallery]: image grid, used by infobox image lists and usable anywhere. */
+.callout[data-callout="gallery"] { --callout-icon: lucide-images; background: transparent; border: none; padding: 0; }
+.callout[data-callout="gallery"] > .callout-title { display: none; }
+.callout[data-callout="gallery"] .callout-content { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 6px; }
+.callout[data-callout="gallery"] .callout-content p { margin: 0; }
+.callout[data-callout="gallery"] img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; }
+.callout[data-callout="gallery"] em { display: block; text-align: center; font-size: 0.8em; }

@@ -1,0 +1,4 @@
+/* Wiki-style typography: underlined h2 like Chronicler/MediaWiki, compact Connections lists. */
+.markdown-rendered h2, .cm-header-2 { border-bottom: 1px solid var(--background-modifier-border); padding-bottom: 0.15em; }
+.markdown-rendered h2 + ul { margin-top: 0.25em; }
+.markdown-rendered::after { content: ""; display: block; clear: both; }

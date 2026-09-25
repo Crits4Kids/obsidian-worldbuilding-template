@@ -1,0 +1,8 @@
+// QuickAdd user script → WB: Remove example content. Logic lives in _System/Scripts/lib/commands.js.
+module.exports = async (params) => {
+  const src = await params.app.vault.adapter.read("_System/Scripts/loader.js");
+  const m = { exports: {} };
+  new Function("module", "exports", src)(m, m.exports);
+  const wb = await m.exports.loadWb(params.app);
+  await wb.commands.run("removeExamples", params);
+};

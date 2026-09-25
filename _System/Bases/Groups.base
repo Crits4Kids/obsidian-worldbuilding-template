@@ -1,0 +1,27 @@
+filters:
+  and:
+    - type == "group"
+    - status != "archived"
+    - '!file.inFolder("Player Handouts")'
+views:
+  - type: table
+    name: All
+    order: [file.name, group_type, leader, headquarters, status, summary]
+  - type: table
+    name: Power
+    filters:
+      and:
+        - group_type == "power"
+    order: [file.name, leader, headquarters, status, summary]
+  - type: table
+    name: Guild
+    filters:
+      and:
+        - group_type == "guild"
+    order: [file.name, leader, headquarters, status, summary]
+  - type: table
+    name: Faith
+    filters:
+      and:
+        - group_type == "faith"
+    order: [file.name, leader, headquarters, status, summary]

@@ -1,0 +1,15 @@
+# Obsidian per-device state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspaces.json
+.obsidian/cache
+.obsidian/plugins/*/data-cache*
+.obsidian/plugins/obsidian-excalidraw-plugin/*.bak
+.smart-env/
+.trash/
+# OS
+.DS_Store
+Thumbs.db
+# Tooling scratch
+_System/tools/.tmp/
+.superpowers/

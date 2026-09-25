@@ -1,0 +1,33 @@
+filters:
+  and:
+    - type == "plot"
+    - status != "archived"
+    - '!file.inFolder("Player Handouts")'
+views:
+  - type: table
+    name: All
+    order: [file.name, plot_type, status, summary]
+  - type: table
+    name: Hook
+    filters:
+      and:
+        - plot_type == "hook"
+    order: [file.name, status, summary]
+  - type: table
+    name: Event
+    filters:
+      and:
+        - plot_type == "event"
+    order: [file.name, status, summary]
+  - type: table
+    name: Fact
+    filters:
+      and:
+        - plot_type == "fact"
+    order: [file.name, status, summary]
+  - type: table
+    name: Clock
+    filters:
+      and:
+        - plot_type == "clock"
+    order: [file.name, stage, max_stage, owner, status, summary]

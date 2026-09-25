@@ -1,0 +1,203 @@
+{
+  "choices": [
+    {
+      "id": "wb-new-entity",
+      "name": "WB: New entity",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "id": "wb-new-entity-macro",
+        "name": "WB: New entity",
+        "commands": [
+          {
+            "id": "wb-new-entity-script",
+            "name": "new-entity",
+            "type": "UserScript",
+            "path": "_System/Scripts/quickadd/new-entity.js",
+            "settings": {}
+          }
+        ]
+      }
+    },
+    {
+      "id": "wb-new-campaign",
+      "name": "WB: New campaign",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "id": "wb-new-campaign-macro",
+        "name": "WB: New campaign",
+        "commands": [
+          {
+            "id": "wb-new-campaign-script",
+            "name": "new-campaign",
+            "type": "UserScript",
+            "path": "_System/Scripts/quickadd/new-campaign.js",
+            "settings": {}
+          }
+        ]
+      }
+    },
+    {
+      "id": "wb-new-session",
+      "name": "WB: New session",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "id": "wb-new-session-macro",
+        "name": "WB: New session",
+        "commands": [
+          {
+            "id": "wb-new-session-script",
+            "name": "new-session",
+            "type": "UserScript",
+            "path": "_System/Scripts/quickadd/new-session.js",
+            "settings": {}
+          }
+        ]
+      }
+    },
+    {
+      "id": "wb-refresh-infobox",
+      "name": "WB: Refresh infobox",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "id": "wb-refresh-infobox-macro",
+        "name": "WB: Refresh infobox",
+        "commands": [
+          {
+            "id": "wb-refresh-infobox-script",
+            "name": "refresh-infobox",
+            "type": "UserScript",
+            "path": "_System/Scripts/quickadd/refresh-infobox.js",
+            "settings": {}
+          }
+        ]
+      }
+    },
+    {
+      "id": "wb-rebuild-world-bible",
+      "name": "WB: Rebuild World Bible",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "id": "wb-rebuild-world-bible-macro",
+        "name": "WB: Rebuild World Bible",
+        "commands": [
+          {
+            "id": "wb-rebuild-world-bible-script",
+            "name": "rebuild-world-bible",
+            "type": "UserScript",
+            "path": "_System/Scripts/quickadd/rebuild-world-bible.js",
+            "settings": {}
+          }
+        ]
+      }
+    },
+    {
+      "id": "wb-deck-of-worlds",
+      "name": "WB: Deck of Worlds: new micro-setting",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "id": "wb-deck-of-worlds-macro",
+        "name": "WB: Deck of Worlds: new micro-setting",
+        "commands": [
+          {
+            "id": "wb-deck-of-worlds-script",
+            "name": "deck-of-worlds",
+            "type": "UserScript",
+            "path": "_System/Scripts/quickadd/deck-of-worlds.js",
+            "settings": {}
+          }
+        ]
+      }
+    },
+    {
+      "id": "wb-export-handouts",
+      "name": "WB: Export player handouts",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "id": "wb-export-handouts-macro",
+        "name": "WB: Export player handouts",
+        "commands": [
+          {
+            "id": "wb-export-handouts-script",
+            "name": "export-handouts",
+            "type": "UserScript",
+            "path": "_System/Scripts/quickadd/export-handouts.js",
+            "settings": {}
+          }
+        ]
+      }
+    },
+    {
+      "id": "wb-archive-note",
+      "name": "WB: Archive note",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "id": "wb-archive-note-macro",
+        "name": "WB: Archive note",
+        "commands": [
+          {
+            "id": "wb-archive-note-script",
+            "name": "archive-note",
+            "type": "UserScript",
+            "path": "_System/Scripts/quickadd/archive-note.js",
+            "settings": {}
+          }
+        ]
+      }
+    },
+    {
+      "id": "wb-remove-examples",
+      "name": "WB: Remove example content",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "id": "wb-remove-examples-macro",
+        "name": "WB: Remove example content",
+        "commands": [
+          {
+            "id": "wb-remove-examples-script",
+            "name": "remove-examples",
+            "type": "UserScript",
+            "path": "_System/Scripts/quickadd/remove-examples.js",
+            "settings": {}
+          }
+        ]
+      }
+    }
+  ],
+  "macros": [],
+  "migrations": {
+    "migrateToMacroIDFromEmbeddedMacro": true,
+    "useQuickAddTemplateFolder": true,
+    "incrementFileNameSettingMoveToDefaultBehavior": true,
+    "consolidateFileExistsBehavior": true,
+    "repairTemplateFileExistsBehavior": true,
+    "mutualExclusionInsertAfterAndWriteToBottomOfFile": true,
+    "setVersionAfterUpdateModalRelease": true,
+    "addDefaultAIProviders": true,
+    "removeMacroIndirection": true,
+    "migrateFileOpeningSettings": true,
+    "backfillFileOpeningDefaults": true,
+    "setProviderModelDiscoveryMode": true,
+    "migrateProviderApiKeysToSecretStorage": true,
+    "migrateToMultipleTemplateFolders": true,
+    "refreshStaleDefaultModelSeeds": true,
+    "pinAiModelRefs": true
+  }
+}

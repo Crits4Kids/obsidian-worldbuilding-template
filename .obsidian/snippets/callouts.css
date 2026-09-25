@@ -1,0 +1,5 @@
+/* [!gm]: GM-only secrets (stripped from player handouts). [!spoiler]: player-safe hidden text. */
+.callout[data-callout="gm"] { --callout-color: 185, 28, 28; --callout-icon: lucide-eye-off; border-left: 4px solid rgb(185, 28, 28); }
+.callout[data-callout="spoiler"] { --callout-color: 100, 116, 139; --callout-icon: lucide-eye; }
+.callout[data-callout="spoiler"].is-collapsed .callout-title-inner::after { content: " (click to reveal)"; opacity: 0.6; font-weight: 400; }
+.callout[data-callout="quote"] { --callout-icon: lucide-layers; }
