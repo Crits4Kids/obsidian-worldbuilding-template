@@ -32,3 +32,9 @@ test("appearance enables Minimal and every snippet exists", () => {
   expect(a.cssTheme).toBe("Minimal");
   for (const s of a.enabledCssSnippets) expect(existsSync(join(ROOT, ".obsidian/snippets", `${s}.css`))).toBe(true);
 });
+
+test("properties are hidden in notes and one hotkey opens the file-properties panel", () => {
+  expect(json(".obsidian/app.json").propertiesInDocument).toBe("hidden");
+  const hk = json(".obsidian/hotkeys.json")["properties:open-local"];
+  expect(hk).toEqual([{ modifiers: ["Mod", "Shift"], key: ";" }]);
+});

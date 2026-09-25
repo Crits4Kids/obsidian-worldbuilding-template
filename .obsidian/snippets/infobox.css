@@ -1,8 +1,9 @@
 /* [!infobox]: Chronicler-style wiki infobox, floated right on wide panes. */
+.markdown-preview-sizer, .cm-sizer { container-type: inline-size; }
 .callout[data-callout="infobox"] {
   --callout-color: var(--color-base-50);
   --callout-icon: lucide-info;
-  float: right; clear: right; width: min(320px, 45%); margin: 0 0 1em 1.5em; padding: 0.5em 0.75em;
+  float: right; clear: right; width: clamp(220px, 40%, 320px); margin: 0 0 1em 1.5em; padding: 0.5em 0.75em;
   background: var(--background-secondary); border: 1px solid var(--background-modifier-border); border-radius: 6px;
   font-size: 0.875em;
 }
@@ -10,9 +11,13 @@
 .callout[data-callout="infobox"] .callout-title-inner { text-align: center; }
 .callout[data-callout="infobox"] img { display: block; margin: 0.25em auto; max-width: 100%; border-radius: 4px; }
 .callout[data-callout="infobox"] h6 { text-align: center; margin: 0.5em 0 0.25em; font-size: 0.95em; background: var(--background-modifier-hover); padding: 2px 4px; }
+.callout[data-callout="infobox"] .table-wrapper { overflow: visible; }
 .callout[data-callout="infobox"] table { width: 100%; margin: 0; }
 .callout[data-callout="infobox"] thead { display: none; }
 .callout[data-callout="infobox"] td { border: none; padding: 2px 4px; vertical-align: top; }
-.callout[data-callout="infobox"] td:first-child { width: 40%; }
+/* Labels stay on one line; values wrap (long links and names never get clipped). */
+.callout[data-callout="infobox"] td:first-child { white-space: nowrap; padding-right: 0.75em; }
+.callout[data-callout="infobox"] td:last-child { white-space: normal; overflow-wrap: anywhere; width: 100%; }
 .callout[data-callout="infobox"] hr { margin: 0.4em 0; }
-@media (max-width: 700px) { .callout[data-callout="infobox"] { float: none; width: 100%; margin: 0 0 1em; } }
+/* Narrow note pane (split view, sidebar open, mobile): stack the infobox above the text instead of floating it. */
+@container (max-width: 560px) { .callout[data-callout="infobox"] { float: none; width: 100%; margin: 0 0 1em; } }

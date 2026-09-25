@@ -5,6 +5,8 @@ Run this in a **fresh clone** after changing plugins, scripts or config.
 - [ ] Open the folder as a vault → **Trust author and enable plugins**. Settings → Community plugins shows all 11 enabled.
 - [ ] Settings → Templater → turn on **Trigger Templater on new file creation** (device-local). No "settings were reset" notice appears.
 - [ ] Appearance: Minimal is active; the snippets `chronicle`, `infobox`, `callouts` and `gallery` are enabled.
+- [ ] Notes open without a properties block; **Cmd+Shift+;** opens the File properties panel with the note's properties.
+- [ ] The infobox floats right in a wide pane and stacks above the text in a narrow one (split the pane to check); no values are cut off.
 - [ ] `World/Places` → right-click → New note. The Place prompts appear, the note is renamed, and the infobox renders floated right.
 - [ ] **WB: New entity** → Person / NPC. The note is created in `World/People` and opened.
 - [ ] **WB: New campaign** creates `Campaigns/<Name>/` with `Arcs/` and `Sessions/`.

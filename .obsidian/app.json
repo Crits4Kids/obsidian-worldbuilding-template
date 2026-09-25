@@ -6,7 +6,7 @@
   "newLinkFormat": "shortest",
   "alwaysUpdateLinks": true,
   "showFrontmatter": true,
-  "propertiesInDocument": "visible",
+  "propertiesInDocument": "hidden",
   "userIgnoreFilters": [
     "docs/",
     "Player Handouts/",
