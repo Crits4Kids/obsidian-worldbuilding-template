@@ -56,3 +56,11 @@ test("noteIssues reports missing summary and stale infobox", () => {
   expect(notes.noteIssues({ ...fm, summary: "ok", rarity: "rare" }, text, "Key")).toEqual(["infobox out of date"]);
   expect(notes.noteIssues({ ...fm, summary: "ok" }, "---\n---\nNo box", "Key")).toEqual(["infobox missing"]);
 });
+
+test("person notes get a Charted Roots cr_id so they appear in family charts", () => {
+  const a = notes.buildFrontmatter({ type: "person", subtype: "npc", name: "A" });
+  const b = notes.buildFrontmatter({ type: "person", subtype: "npc", name: "B" });
+  expect(a.cr_id).toMatch(/^[a-z]{3}-\d{3}-[a-z]{3}-\d{3}$/);
+  expect(a.cr_id).not.toBe(b.cr_id);
+  expect(notes.buildFrontmatter({ type: "place", subtype: "region", name: "P" }).cr_id).toBeUndefined();
+});

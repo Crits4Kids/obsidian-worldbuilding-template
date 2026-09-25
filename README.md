@@ -37,6 +37,8 @@ All commands are in the command palette under `WB:`.
 
 Creating a note directly in a family folder (right-click → New note) runs the same prompts automatically.
 
+**Properties:** notes hide their properties so pages read like a wiki. Press **Cmd/Ctrl+Shift+;** (or run *Show file properties*) to open the File properties panel in the right sidebar, where you can view and edit them; press it again or close the sidebar to hide it. **Cmd/Ctrl+;** still adds a property. To show properties inside notes again: Settings → Editor → Properties in document → Visible.
+
 **Writing conventions:** put secrets in `> [!gm]- GM only` callouts. Keep the `summary` property to one line, because it feeds the World Bible. Don't hand-edit the `[!infobox]` block. The full schema is in [`_System/Schema.md`](_System/Schema.md).
 
 **Dashboards:** [[Home]], `_System/Dashboards/Maintenance` (stale infoboxes, missing summaries), `_System/Dashboards/Sessions`, and a Base per family in `_System/Bases/`.
