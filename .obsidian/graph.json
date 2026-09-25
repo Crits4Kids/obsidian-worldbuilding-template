@@ -1,0 +1,12 @@
+{
+  "colorGroups": [
+    { "query": "tag:#person", "color": { "a": 1, "rgb": 14701138 } },
+    { "query": "tag:#group", "color": { "a": 1, "rgb": 14725458 } },
+    { "query": "tag:#place", "color": { "a": 1, "rgb": 14733906 } },
+    { "query": "tag:#thing", "color": { "a": 1, "rgb": 5431378 } },
+    { "query": "tag:#lore", "color": { "a": 1, "rgb": 5395026 } },
+    { "query": "tag:#plot", "color": { "a": 1, "rgb": 11032055 } },
+    { "query": "tag:#session OR tag:#campaign OR tag:#arc", "color": { "a": 1, "rgb": 9127187 } }
+  ],
+  "search": "-path:_System -path:\"Player Handouts\" -path:Archive"
+}

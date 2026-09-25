@@ -1,0 +1,11 @@
+{
+  "peopleFolder": "World/People",
+  "placesFolder": "World/Places",
+  "organizationsFolder": "World/Groups",
+  "eventsFolder": "World/Plot",
+  "canvasesFolder": "Assets/Family Trees",
+  "basesFolder": "_System/Bases/Charted Roots",
+  "reportsFolder": "Assets/Reports",
+  "autoGenerateCrId": true,
+  "calendariumIntegration": "read"
+}

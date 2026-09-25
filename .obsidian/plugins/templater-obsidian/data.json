@@ -1,0 +1,22 @@
+{
+  "templates_folder": "_System/Templates",
+  "user_scripts_folder": "_System/Scripts/templater",
+  "trigger_on_file_creation": true,
+  "trigger_on_file_creation_mode": "folder",
+  "enable_folder_templates": true,
+  "folder_templates": [
+    { "folder": "World/People", "template": "_System/Templates/Person.md" },
+    { "folder": "World/Groups", "template": "_System/Templates/Group.md" },
+    { "folder": "World/Places", "template": "_System/Templates/Place.md" },
+    { "folder": "World/Things", "template": "_System/Templates/Thing.md" },
+    { "folder": "World/Lore", "template": "_System/Templates/Lore.md" },
+    { "folder": "World/Plot", "template": "_System/Templates/Plot.md" },
+    { "folder": "Campaigns", "template": "_System/Templates/Campaign Item.md" },
+    { "folder": "Micro-settings", "template": "_System/Templates/Micro-setting.md" },
+    { "folder": "Maps", "template": "_System/Templates/Map.md" },
+    { "folder": "GM Toolkit", "template": "_System/Templates/GM Toolkit Item.md" }
+  ],
+  "ignore_folders_on_creation": ["_System", "Player Handouts", "Archive", "Assets"],
+  "syntax_highlighting": true,
+  "auto_jump_to_cursor": false
+}
