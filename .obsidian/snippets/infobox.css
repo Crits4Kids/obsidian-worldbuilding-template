@@ -7,7 +7,7 @@
   background: var(--background-secondary); border: 1px solid var(--background-modifier-border); border-radius: 6px;
   font-size: 0.875em;
 }
-.callout[data-callout="infobox"] .callout-title { justify-content: center; font-size: 1.1em; font-weight: 700; }
+.callout[data-callout="infobox"] .callout-title { justify-content: center; font-size: 1.1em; font-weight: 700; color: var(--text-normal); }
 .callout[data-callout="infobox"] .callout-title-inner { text-align: center; }
 .callout[data-callout="infobox"] img { display: block; margin: 0.25em auto; max-width: 100%; border-radius: 4px; }
 .callout[data-callout="infobox"] h6 { text-align: center; margin: 0.5em 0 0.25em; font-size: 0.95em; background: var(--background-modifier-hover); padding: 2px 4px; }

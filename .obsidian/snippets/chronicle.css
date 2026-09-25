@@ -2,3 +2,8 @@
 .markdown-rendered h2, .cm-header-2 { border-bottom: 1px solid var(--background-modifier-border); padding-bottom: 0.15em; }
 .markdown-rendered h2 + ul { margin-top: 0.25em; }
 .markdown-rendered::after { content: ""; display: block; clear: both; }
+/* Headings, tables and rules flow around a floated infobox instead of running underneath it
+   (otherwise an h2 underline cuts through the infobox and wide tables leave a gap). */
+.markdown-rendered h1, .markdown-rendered h2, .markdown-rendered h3,
+.markdown-rendered .el-table, .markdown-rendered .table-wrapper, .markdown-rendered hr { display: flow-root; }
+.markdown-rendered .el-table > table { width: 100%; }
