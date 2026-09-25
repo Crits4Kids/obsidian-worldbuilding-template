@@ -36,3 +36,4 @@ _What the group is and what people say about it._
 > _Hidden agenda, internal fractures, who really pulls the strings._
 
 ## Connections
+- [[ZZ Smoke Stack]] (micro-setting: namesake)

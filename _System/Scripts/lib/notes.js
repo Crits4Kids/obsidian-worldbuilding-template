@@ -6,6 +6,9 @@ const { renderInfobox, upsertInfobox, readInfobox } = require("./infobox");
 
 const BODIES = "_System/Templates/Bodies";
 const clone = (v) => (Array.isArray(v) ? [...v] : v);
+// Charted Roots only charts people with a cr_id; same shape it generates itself (abc-123-def-456).
+const pick = (chars, n) => Array.from({ length: n }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
+const crId = () => `${pick("abcdefghijklmnopqrstuvwxyz", 3)}-${pick("0123456789", 3)}-${pick("abcdefghijklmnopqrstuvwxyz", 3)}-${pick("0123456789", 3)}`;
 
 function buildFrontmatter({ type, subtype, name, summary = "", campaigns = [], share, fields = {}, tags = [] }) {
   const def = schema.TYPES[type];
@@ -20,7 +23,7 @@ function buildFrontmatter({ type, subtype, name, summary = "", campaigns = [], s
     status: "active", campaigns: [...campaigns], summary,
     share: share ?? schema.DEFAULT_SHARE[type] ?? false, aliases: [], tags: [type, ...tags],
   });
-  if (type === "person") Object.assign(fm, { cr_type: "person", name });
+  if (type === "person") Object.assign(fm, { cr_id: crId(), cr_type: "person", name });
   const defaults = { ...(def.fields || {}), ...((def.subtypeFields || {})[subtype] || {}) };
   for (const [k, v] of Object.entries(defaults)) fm[k] = clone(v);
   return Object.assign(fm, fields);

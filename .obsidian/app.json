@@ -7,5 +7,9 @@
   "alwaysUpdateLinks": true,
   "showFrontmatter": true,
   "propertiesInDocument": "visible",
-  "userIgnoreFilters": ["docs/", "Player Handouts/", "_System/tools/"]
+  "userIgnoreFilters": [
+    "docs/",
+    "Player Handouts/",
+    "_System/tools/"
+  ]
 }

@@ -1,23 +1,21 @@
 ---
-title: Example Campaign
+title: ZZ Smoke Campaign
 subtitle:
 infobox:
 image:
 type: campaign
-status: background
+status: active
 campaigns: []
-summary: "A sample campaign. Delete with WB: Remove example content."
+summary:
 share: false
 aliases: []
-tags:
-  - campaign
-  - example
+tags: [campaign]
 system: Any
 players: []
 start:
-active: false
+active: true
 ---
-> [!infobox]+ Example Campaign
+> [!infobox]+ ZZ Smoke Campaign
 >
 > | | |
 > |---|---|
