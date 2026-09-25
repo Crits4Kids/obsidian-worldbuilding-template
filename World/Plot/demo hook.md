@@ -1,23 +1,19 @@
 ---
-title: Bell at High Tide
+title: demo hook
 subtitle:
 infobox:
 image:
 type: plot
 plot_type: hook
-status: background
-campaigns:
-  - "[[Example Campaign]]"
-summary: The bell rang when it should not have.
+status: active
+campaigns: []
+summary: demo
 share: false
 aliases: []
-tags:
-  - plot
-  - example
+tags: [plot]
 resolved: false
-fc-date: 0001-01-05
 ---
-> [!infobox]+ Bell at High Tide
+> [!infobox]+ demo hook
 >
 > | | |
 > |---|---|

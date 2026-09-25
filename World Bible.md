@@ -29,16 +29,18 @@ _Active campaign, where the party is, what's in motion right now._
 _What the players don't know yet, so you don't contradict yourself._
 
 <!-- WB:INDEX START -->
-_Generated template build. Do not edit between the markers; run "WB: Rebuild World Bible"._
+_Generated 2026-09-25 14:11. Do not edit between the markers; run "WB: Rebuild World Bible"._
 
-## People (1)
+## People (2)
 - [[Mira Vell]] — npc · background · Harbormaster of Rivertown.
+- [[ZZ Smoke Person]] — npc · active · A smoke-test person.
 
 ## Groups (1)
 - [[Tide Court]] — power · background · The council that rules the delta.
 
-## Places (1)
+## Places (2)
 - [[Rivertown]] — settlement · background · A free trading city on a river delta.
+- [[ZZ Smoke Lighthouse]] — landmark · active · A crooked lighthouse.
 
 ## Things (1)
 - [[The Bell Key]] — key_item · background · Opens the drowned bell tower.
@@ -54,10 +56,12 @@ _Generated template build. Do not edit between the markers; run "WB: Rebuild Wor
 - none
 
 ## Campaigns
-- [[Example Campaign]] — active · 1 sessions · last [[Example Campaign Session 1]] — The party arrives in Rivertown.
+- [[Example Campaign]] — inactive · 1 sessions · last [[Example Campaign Session 1]] — The party arrives in Rivertown.
+- [[ZZ Smoke Campaign]] — active · 1 sessions · last [[ZZ Smoke Campaign Session 1]] — (no summary)
 
-## Micro-settings (1)
+## Micro-settings (2)
 - [[Example Micro-setting]] — background · Shows the Deck of Worlds stack layout.
+- [[ZZ Smoke Stack]] — active · Deck of Worlds micro-setting (Swamp).
 
 ## Archived: 0 notes (not listed)
 <!-- WB:INDEX END -->
