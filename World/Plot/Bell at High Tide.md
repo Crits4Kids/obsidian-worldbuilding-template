@@ -6,16 +6,12 @@ image:
 type: plot
 plot_type: hook
 status: background
-campaigns:
-  - "[[Example Campaign]]"
+campaigns: ["[[Example Campaign]]"]
 summary: The bell rang when it should not have.
 share: false
 aliases: []
-tags:
-  - plot
-  - example
+tags: [plot, example]
 resolved: false
-fc-date: 0001-01-05
 ---
 > [!infobox]+ Bell at High Tide
 >
