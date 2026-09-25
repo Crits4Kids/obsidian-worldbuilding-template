@@ -1,0 +1,13 @@
+# id                          github repo                               (theme lines start with "theme")
+templater-obsidian            silentvoid13/Templater
+dataview                      blacksmithgu/obsidian-dataview
+quickadd                      chhoumann/quickadd
+calendarium                   javalent/calendarium
+obsidian-leaflet-plugin       javalent/obsidian-leaflet
+obsidian-excalidraw-plugin    zsviczian/obsidian-excalidraw-plugin
+charted-roots                 banisterious/obsidian-charted-roots
+find-unlinked-files           vinzent03/find-unlinked-files
+tag-wrangler                  pjeby/tag-wrangler
+obsidian-style-settings       obsidian-community/obsidian-style-settings
+obsidian-git                  vinzent03/obsidian-git
+theme Minimal                 kepano/obsidian-minimal
