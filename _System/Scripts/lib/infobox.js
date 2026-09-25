@@ -2,6 +2,7 @@
 const { HIDDEN_KEYS, HIDDEN_BY_TYPE, LABELS, subtypeKey } = require("./schema");
 const { escapeCell } = require("./markdown");
 
+const SUBTYPE_LABELS = { pc: "PC", npc: "NPC" };
 const toList = (v) => (v === undefined || v === null ? [] : Array.isArray(v) ? v : [v]);
 const isEmpty = (v) => v === null || v === undefined || (typeof v === "string" && v.trim() === "") || (Array.isArray(v) && v.every(isEmpty));
 
@@ -52,7 +53,7 @@ function renderInfobox(fm, name) {
   const aliases = {};
   for (const r of layout) if (r.type === "alias") for (const k of toList(r.keys)) aliases[k] = r.text;
   const label = (k) => aliases[k] ?? LABELS[k] ?? (k === sk ? "Type" : humanize(k));
-  const value = (k) => (k === sk && fm[k] ? humanize(fm[k]) : formatValue(fm[k]));
+  const value = (k) => (k === sk && fm[k] ? SUBTYPE_LABELS[fm[k]] || humanize(fm[k]) : formatValue(fm[k]));
 
   const keys = Object.keys(fm).filter((k) => !hidden.has(k) && !k.startsWith("cr_"));
   const groupAt = new Map();

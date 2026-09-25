@@ -1,0 +1,27 @@
+filters:
+  and:
+    - type == "person"
+    - status != "archived"
+views:
+  - type: table
+    name: All
+    order: [file.name, person_type, role, faction, location, status, summary]
+  - type: table
+    name: Player characters
+    filters:
+      and:
+        - person_type == "pc"
+    order: [file.name, role, faction, summary]
+  - type: table
+    name: NPCs
+    filters:
+      and:
+        - person_type == "npc"
+    order: [file.name, role, faction, location, summary]
+  - type: table
+    name: Enemies & monsters
+    filters:
+      or:
+        - person_type == "enemy"
+        - person_type == "monster"
+    order: [file.name, person_type, location, summary]

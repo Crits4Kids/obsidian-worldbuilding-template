@@ -1,0 +1,32 @@
+filters:
+  and:
+    - type == "place"
+    - status != "archived"
+views:
+  - type: table
+    name: All
+    order: [file.name, place_type, region, ruler, status, summary]
+  - type: table
+    name: Region
+    filters:
+      and:
+        - place_type == "region"
+    order: [file.name, region, ruler, status, summary]
+  - type: table
+    name: Settlement
+    filters:
+      and:
+        - place_type == "settlement"
+    order: [file.name, region, ruler, status, summary]
+  - type: table
+    name: Building
+    filters:
+      and:
+        - place_type == "building"
+    order: [file.name, region, ruler, status, summary]
+  - type: table
+    name: Landmark
+    filters:
+      and:
+        - place_type == "landmark"
+    order: [file.name, region, ruler, status, summary]

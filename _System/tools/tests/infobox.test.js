@@ -85,3 +85,8 @@ test("upsertInfobox inserts at top, then replaces in place", () => {
 test("upsertInfobox keeps a blank line before following text", () => {
   expect(upsertInfobox("> [!infobox]+ A\n> x\nText", "> [!infobox]+ A\n> y")).toBe("> [!infobox]+ A\n> y\n\nText");
 });
+
+test("pc and npc subtypes render as acronyms", () => {
+  expect(renderInfobox({ type: "person", person_type: "npc" }, "A")).toContain("> | **Type** | NPC |");
+  expect(renderInfobox({ type: "person", person_type: "pc" }, "A")).toContain("> | **Type** | PC |");
+});

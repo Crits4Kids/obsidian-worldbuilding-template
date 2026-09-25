@@ -1,0 +1,26 @@
+filters:
+  and:
+    - type == "thing"
+    - status != "archived"
+views:
+  - type: table
+    name: All
+    order: [file.name, thing_type, owner, location, status, summary]
+  - type: table
+    name: Magic item
+    filters:
+      and:
+        - thing_type == "magic_item"
+    order: [file.name, owner, location, status, summary]
+  - type: table
+    name: Key item
+    filters:
+      and:
+        - thing_type == "key_item"
+    order: [file.name, owner, location, status, summary]
+  - type: table
+    name: Mundane item
+    filters:
+      and:
+        - thing_type == "mundane_item"
+    order: [file.name, owner, location, status, summary]
