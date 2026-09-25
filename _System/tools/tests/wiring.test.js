@@ -8,7 +8,7 @@ const S = join(__dirname, "../..");
 const COMMANDS = {
   "new-entity": "newEntity", "new-campaign": "newCampaign", "new-session": "newSession",
   "refresh-infobox": "refreshInfobox", "rebuild-world-bible": "rebuildWorldBible", "deck-of-worlds": "deckOfWorlds",
-  "export-handouts": "exportHandouts", "archive-note": "archiveNote", "remove-examples": "removeExamples",
+  "export-handouts": "exportHandouts", "archive-note": "archiveNote", "remove-examples": "removeExamples", "enable-auto-backup": "enableAutoBackup",
 };
 
 test("each QuickAdd script calls an existing command", () => {

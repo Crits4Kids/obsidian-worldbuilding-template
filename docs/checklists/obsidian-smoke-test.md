@@ -21,5 +21,6 @@ Run this in a **fresh clone** after changing plugins, scripts or config.
 - [ ] Calendarium: "World Calendar" exists and is the default. Give the event `Bell at High Tide` a date and it shows on the calendar.
 - [ ] `Maps/World Map` renders the placeholder map.
 - [ ] Charted Roots: set `father: "[[Mira Vell]]"` on a new person, then right-click → Open family chart.
-- [ ] Obsidian Git: the status bar shows the git status; Source Control view works.
+- [ ] Obsidian Git: the status bar shows the git status; Source Control view works; **no automatic commits happen** (auto-backup ships off).
+- [ ] In this template clone, **WB: Enable auto-backup** refuses with a "direct clone of the template" message. In a game repo made with *Use this template*, it succeeds and Obsidian Git shows a 10-minute auto-commit.
 - [ ] **Link resolution:** in `World/People/Mira Vell`, click `[[Rivertown]]`. It opens `World/Places/Rivertown.md`, **not** the copy in `Player Handouts/`. If it opens the copy, report it: the export folder needs to move.

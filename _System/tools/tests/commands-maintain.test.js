@@ -105,3 +105,23 @@ test("deckOfWorlds links the real note, not a same-named player handout copy", a
   expect(store.get("World/Groups/Tide Court.md")).toContain("- [[Bell]] (micro-setting: landmark)");
   expect(store.get("Player Handouts/Groups/Tide Court.md")).not.toContain("[[Bell]]");
 });
+
+const gitData = ".obsidian/plugins/obsidian-git/data.json";
+const gitCfg = (url) => `[remote "origin"]\n\turl = ${url}\n`;
+test("enableAutoBackup refuses while origin is the template repo, and changes nothing", async () => {
+  const { app, store, wb } = await boot({ ".git/config": gitCfg("https://github.com/Crits4Kids/obsidian-worldbuilding-template.git"), [gitData]: '{"autoSaveInterval":0}' });
+  await expect(wb.commands.enableAutoBackup({ app, ui: makeUi([]), now: NOW })).rejects.toThrow("template");
+  expect(store.get(gitData)).toBe('{"autoSaveInterval":0}');
+});
+
+test("enableAutoBackup refuses when there is no origin remote", async () => {
+  const { app, wb } = await boot({ ".git/config": "[core]\n", [gitData]: "{}" });
+  await expect(wb.commands.enableAutoBackup({ app, ui: makeUi([]), now: NOW })).rejects.toThrow("remote");
+});
+
+test("enableAutoBackup writes the settings and reloads Obsidian Git for a game repo", async () => {
+  const { app, store, wb } = await boot({ ".git/config": gitCfg("git@github.com:me/my-game.git"), [gitData]: '{"autoSaveInterval":0,"commitMessage":"m"}' });
+  await wb.commands.enableAutoBackup({ app, ui: makeUi([]), now: NOW });
+  expect(JSON.parse(store.get(gitData))).toMatchObject({ autoSaveInterval: 10, disablePush: false, commitMessage: "m" });
+  expect(app.plugins.log).toEqual(["disable:obsidian-git", "enable:obsidian-git"]);
+});

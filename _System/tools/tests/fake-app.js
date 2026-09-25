@@ -32,6 +32,7 @@ function makeFakeApp(files = {}) {
   const parse = (t) => { const { yaml } = splitFrontmatter(t); return yaml ? Bun.YAML.parse(yaml) || {} : undefined; };
   const app = {
     vault: {
+      configDir: ".obsidian",
       getMarkdownFiles: () => [...store.keys()].filter((p) => p.endsWith(".md")).map(fileObj),
       read: async (f) => store.get(f.path),
       cachedRead: async (f) => store.get(f.path),
@@ -47,6 +48,7 @@ function makeFakeApp(files = {}) {
       adapter: {
         exists: async (p) => store.has(p) || folders.has(p),
         read: async (p) => { if (!store.has(p)) throw new Error(`ENOENT ${p}`); return store.get(p); },
+        write: async (p, data) => { store.set(p, data); addFolders(p); },
         list: async (dir) => ({ files: [...store.keys()].filter((p) => parentOf(p) === dir), folders: [...folders].filter((p) => parentOf(p) === dir) }),
       },
     },
@@ -70,6 +72,12 @@ function makeFakeApp(files = {}) {
         store.set(to, store.get(f.path)); store.delete(f.path); addFolders(to);
       },
       trashFile: async (f) => { store.delete(f.path); },
+    },
+    plugins: {
+      log: [],
+      enabledPlugins: new Set(["obsidian-git"]),
+      async disablePlugin(id) { this.log.push(`disable:${id}`); this.enabledPlugins.delete(id); },
+      async enablePlugin(id) { this.log.push(`enable:${id}`); this.enabledPlugins.add(id); },
     },
     workspace: {
       activePath: null,

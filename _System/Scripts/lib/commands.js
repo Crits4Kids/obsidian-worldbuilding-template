@@ -6,6 +6,7 @@ const infobox = require("./infobox");
 const bible = require("./bible");
 const handouts = require("./handouts");
 const deck = require("./deck");
+const backup = require("./backup");
 
 const CANCEL = Symbol("cancel");
 const isoDate = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
@@ -313,6 +314,21 @@ async function deckOfWorlds(ctx) {
   return file;
 }
 
+async function enableAutoBackup(ctx) {
+  const { app } = ctx;
+  const gitConfig = (await app.vault.adapter.exists(".git/config")) ? await app.vault.adapter.read(".git/config") : "";
+  const url = backup.originUrl(gitConfig);
+  if (!url) throw new Error("This vault has no Git remote called origin. Create your game's own repository (GitHub → Use this template), clone that, then run this again.");
+  if (backup.isTemplateRemote(url)) throw new Error(`This vault is a direct clone of the template (${url}). Auto-backup would push your game into the template. Use GitHub → Use this template to make a repository for this game, clone that, then run this again.`);
+  const path = `${app.vault.configDir}/plugins/obsidian-git/data.json`;
+  const current = (await app.vault.adapter.exists(path)) ? JSON.parse(await app.vault.adapter.read(path)) : {};
+  await app.vault.adapter.write(path, `${JSON.stringify(backup.withAutoBackup(current), null, 2)}\n`);
+  // Reload so Obsidian Git picks up the new timer.
+  if (app.plugins.enabledPlugins.has("obsidian-git")) await app.plugins.disablePlugin("obsidian-git");
+  await app.plugins.enablePlugin("obsidian-git");
+  await ctx.ui.info("Auto-backup on", `Obsidian Git will commit and push to ${url} every 10 minutes.`);
+}
+
 // ---------- entry point for QuickAdd scripts ----------
 async function run(name, params) {
   const ctx = { app: params.app, ui: uiFromQuickAdd(params.quickAddApi, params.obsidian), now: new Date() };
@@ -330,5 +346,5 @@ module.exports = {
   CANCEL, run, fromTemplater, uiFromQuickAdd, uiFromTemplater,
   ask, fmOf, under, ofType, ensureFolder, readBody, assertFree, cleanName, createEntity, pickCampaign, isoDate, stamp,
   newEntity, newCampaign, newSession,
-  refreshInfobox, rebuildWorldBible, exportHandouts, archiveNote, removeExamples, deckOfWorlds,
+  refreshInfobox, rebuildWorldBible, exportHandouts, archiveNote, removeExamples, deckOfWorlds, enableAutoBackup,
 };

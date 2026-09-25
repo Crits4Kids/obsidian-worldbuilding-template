@@ -1,5 +1,5 @@
 {
-  "autoSaveInterval": 10,
+  "autoSaveInterval": 0,
   "differentIntervalCommitAndPush": false,
   "autoPushInterval": 0,
   "autoPullOnBoot": true,
