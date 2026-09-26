@@ -72,8 +72,9 @@ Run **WB: Deck of Worlds: new micro-setting**:
 2. Pick the Region card's biome.
 3. For each card (Landmark → Namesake → Origin → Attribute → Advent):
    1. Choose what it becomes: a new place, person, group, lore, event or hook; a link to an existing note; or skip.
-   2. Paste the card text.
-   3. Name the note.
+   2. For a place, person, group or lore note, pick its kind (for example group → faith, lore → species). The usual default is listed first, so Enter keeps it.
+   3. Paste the card text.
+   4. Name the note.
 
 The command then:
 

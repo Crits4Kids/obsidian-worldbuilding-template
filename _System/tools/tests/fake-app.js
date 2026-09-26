@@ -91,8 +91,8 @@ function makeFakeApp(files = {}) {
 function makeUi(answers) {
   const queue = [...answers];
   const log = [];
-  const next = (kind, header) => {
-    log.push([kind, header]);
+  const next = (kind, header, values) => {
+    log.push([kind, header, values]);
     if (!queue.length) throw new Error(`Unexpected ${kind}: ${header}`);
     return queue.shift();
   };
@@ -101,7 +101,7 @@ function makeUi(answers) {
     prompt: async (h) => next("prompt", h),
     wide: async (h) => next("wide", h),
     suggest: async (labels, values, placeholder) => {
-      const a = next("suggest", placeholder || labels.join("|"));
+      const a = next("suggest", placeholder || labels.join("|"), values);
       if (a !== null && a !== undefined && !values.includes(a)) throw new Error(`Answer ${JSON.stringify(a)} not offered: ${JSON.stringify(values)}`);
       return a;
     },
