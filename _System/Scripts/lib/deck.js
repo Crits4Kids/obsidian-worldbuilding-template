@@ -42,7 +42,7 @@ function planStack({ name, biome, cards }) {
     if (i > 0) connections.push(`[[${used[i - 1].noteName}]]`);
     if (i < used.length - 1) connections.push(`[[${used[i + 1].noteName}]]`);
     const quoted = String(c.text).trim().split("\n").map((l) => `> ${l}`).join("\n");
-    notes.push({ type: k.type, subtype: k.subtype, name: c.noteName, summary: summarize(c.text), connections,
+    notes.push({ type: k.type, subtype: c.subtype || k.subtype, name: c.noteName, summary: summarize(c.text), connections,
       vars: { intro: `> [!quote] Deck of Worlds: ${c.slot}\n${quoted}\n\n` } });
   });
   const rows = SLOTS.map((slot) => {

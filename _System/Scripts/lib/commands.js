@@ -283,11 +283,19 @@ async function deckOfWorlds(ctx) {
   for (const slot of deck.SLOTS) {
     const kind = await ask(ui.suggest(kindLabels, kinds, `${infobox.humanize(slot)} card becomes…`));
     if (kind === "skip") continue;
+    // Events and hooks already fix plot_type; other kinds ask, with the usual default first.
+    let subtype;
+    const k = deck.KINDS[kind];
+    if (k && k.type !== "plot") {
+      const subs = schema.FAMILIES[k.type].subtypes;
+      const ordered = [k.subtype, ...subs.filter((s) => s !== k.subtype)];
+      subtype = await ask(ui.suggest(ordered.map((s) => infobox.humanize(s)), ordered, `Kind of ${k.type}`));
+    }
     const text = await ask(ui.wide(`${infobox.humanize(slot)} card text`));
     const noteName = kind === "existing"
       ? await ask(ui.suggest(existing, existing, "Link to which note?"))
       : cleanName(await ask(ui.prompt(`Name for the ${deck.KINDS[kind].label.replace("New ", "")}`)));
-    cards.push({ slot, kind, text, noteName });
+    cards.push({ slot, kind, text, noteName, subtype });
   }
   // 2. Plan and check every collision before writing anything.
   const plan = deck.planStack({ name, biome, cards });

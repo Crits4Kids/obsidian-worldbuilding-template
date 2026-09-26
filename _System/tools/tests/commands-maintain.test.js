@@ -69,8 +69,8 @@ test("deckOfWorlds creates linked notes, the stack note, and updates existing no
   const { app, store, wb } = await boot({ "World/Groups/Tide Court.md": note("type: group", "Court.\n\n## Connections\n") });
   const ui = makeUi([
     "Saltmarsh Bell", "Swamp",
-    "place", "A drowned bell tower. It rings.", "The Drowned Bell",   // landmark
-    "person", "Named for Sister Wren.", "Sister Wren",               // namesake
+    "place", "landmark", "A drowned bell tower. It rings.", "The Drowned Bell",   // landmark
+    "person", "npc", "Named for Sister Wren.", "Sister Wren",                    // namesake
     "existing", "Built by the Tide Court.", "Tide Court",            // origin
     "skip",                                                           // attribute
     "hook", "The bell rang at high tide.", "The Wrong Tide",         // advent
@@ -87,10 +87,10 @@ test("deckOfWorlds creates linked notes, the stack note, and updates existing no
 test("deckOfWorlds creates nothing when a name collides or the user cancels", async () => {
   const { app, store, wb } = await boot({ "World/People/Sister Wren.md": note("type: person") });
   const before = new Map(store);
-  const collide = makeUi(["Stack", "Swamp", "place", "t", "New Place", "person", "t", "Sister Wren", "skip", "skip", "skip"]);
+  const collide = makeUi(["Stack", "Swamp", "place", "landmark", "t", "New Place", "person", "npc", "t", "Sister Wren", "skip", "skip", "skip"]);
   await expect(wb.commands.deckOfWorlds({ app, ui: collide, now: NOW })).rejects.toThrow("already exists");
   expect(new Map(store)).toEqual(before);
-  const cancel = makeUi(["Stack", "Swamp", "place", "t", null]);
+  const cancel = makeUi(["Stack", "Swamp", "place", "landmark", "t", null]);
   await expect(wb.commands.deckOfWorlds({ app, ui: cancel, now: NOW })).rejects.toBe(wb.commands.CANCEL);
   expect(new Map(store)).toEqual(before);
 });
@@ -124,4 +124,25 @@ test("enableAutoBackup writes the settings and reloads Obsidian Git for a game r
   await wb.commands.enableAutoBackup({ app, ui: makeUi([]), now: NOW });
   expect(JSON.parse(store.get(gitData))).toMatchObject({ autoSaveInterval: 10, disablePush: false, commitMessage: "m" });
   expect(app.plugins.log).toEqual(["disable:obsidian-git", "enable:obsidian-git"]);
+});
+
+test("deckOfWorlds asks each card's subtype (default first) and skips it for events and hooks", async () => {
+  const { app, store, wb } = await boot();
+  const ui = makeUi([
+    "Graveyard of Youth Stack", "Jungle",
+    "place", "building", "Graveyard", "Graveyard of Youth",
+    "lore", "history", "Of Youth", "The Stolen Years",
+    "group", "faith", "Founded by a secret society", "The Evergreen Circle",
+    "lore", "species", "Intelligent wildlife", "The Canopy Watchers",
+    "hook", "Something stirs.", "The Stirring",
+    false,
+  ]);
+  await wb.commands.deckOfWorlds({ app, ui, now: NOW });
+  expect(store.get("World/Places/Graveyard of Youth.md")).toContain("place_type: building");
+  expect(store.get("World/Groups/The Evergreen Circle.md")).toContain("group_type: faith");
+  expect(store.get("World/Lore/The Canopy Watchers.md")).toContain("lore_type: species");
+  expect(store.get("World/Plot/The Stirring.md")).toContain("plot_type: hook");
+  const subtypePrompts = ui.log.filter(([k, h]) => k === "suggest" && /^Kind of/.test(h));
+  expect(subtypePrompts.map(([, h]) => h)).toEqual(["Kind of place", "Kind of lore", "Kind of group", "Kind of lore"]);
+  expect(subtypePrompts.map(([, , v]) => v[0])).toEqual(["landmark", "history", "power", "history"]);
 });
